@@ -1,0 +1,108 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 220 20% 98%;
+    --foreground: 224 71.4% 4.1%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 224 71.4% 4.1%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 224 71.4% 4.1%;
+
+    --primary: 252 87% 67%;
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 220 14.3% 95.9%;
+    --secondary-foreground: 220.9 39.3% 11%;
+
+    --muted: 220 14.3% 95.9%;
+    --muted-foreground: 220 8.9% 46.1%;
+
+    --accent: 252 87% 96%;
+    --accent-foreground: 252 87% 45%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 220 13% 91%;
+    --input: 220 13% 91%;
+    --ring: 252 87% 67%;
+
+    --radius: 0.625rem;
+  }
+
+  .dark {
+    --background: 224 45% 6%;
+    --foreground: 210 20% 98%;
+
+    --card: 224 35% 9%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 224 35% 9%;
+    --popover-foreground: 210 20% 98%;
+
+    --primary: 252 87% 67%;
+    --primary-foreground: 210 20% 98%;
+
+    --secondary: 224 25% 15%;
+    --secondary-foreground: 210 20% 98%;
+
+    --muted: 224 25% 14%;
+    --muted-foreground: 217.9 10.6% 64.9%;
+
+    --accent: 252 40% 18%;
+    --accent-foreground: 252 87% 75%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 20% 98%;
+
+    --border: 224 25% 16%;
+    --input: 224 25% 16%;
+    --ring: 252 87% 67%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground selection:bg-primary/20 selection:text-primary;
+    font-feature-settings: "rlh" 1, "cv02", "cv03", "cv04", "cv11";
+  }
+}
+
+/* Custom Utilities & Glassmorphism */
+.glass-panel {
+  @apply bg-card/80 backdrop-blur-md border border-border/60 shadow-xl;
+}
+
+.glass-panel-glow {
+  @apply bg-card/80 backdrop-blur-md border border-primary/20 shadow-lg shadow-primary/5;
+}
+
+.gradient-text {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 via-purple-300 to-indigo-400;
+}
+
+.gradient-border {
+  border-image: linear-gradient(to right, #8b5cf6, #6366f1) 1;
+}
+
+/* Scrollbar Customization */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-muted-foreground/20 rounded-full hover:bg-muted-foreground/40 transition-colors;
+}
