@@ -32,7 +32,7 @@ export const GitHubRepoDrawer: React.FC<GitHubRepoDrawerProps> = ({ repo, onClos
   useEffect(() => {
     if (!repo) return;
     setLoading(true);
-    fetch(`https://innovation-ai-backend-k2gq.onrender.com`)
+   fetch(`https://innovation-ai-backend-k2gq.onrender.com/api/v1/research/github-details?owner=${repo.owner}&repo=${repo.name}`)
       .then(res => res.json())
       .then(data => {
         setDetails(data);

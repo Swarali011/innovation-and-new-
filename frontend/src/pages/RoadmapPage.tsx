@@ -10,7 +10,7 @@ export const RoadmapPage: React.FC = () => {
 
   useEffect(() => {
     setLoading(true);
-    fetch('https://innovation-ai-backend-k2gq.onrender.com', {
+    fetch('https://innovation-ai-backend-k2gq.onrender.com/api/v1/research/roadmap', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
