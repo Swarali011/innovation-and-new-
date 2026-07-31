@@ -47,7 +47,7 @@ export const ResearchWorkspacePage: React.FC = () => {
     if (!searchTerm.trim()) return;
     setSearching(true);
 
-    fetch('http://localhost:8000/api/v1/research/search-papers', {
+    fetch('https://innovation-ai-backend-k2gq.onrender.com', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ query: searchTerm, domain: activeProject?.domain || "General CS/AI", limit: 6 })
