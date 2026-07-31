@@ -13,7 +13,9 @@ import {
   Settings, 
   ShieldCheck,
   Box,
-  GraduationCap
+  GraduationCap,
+  GitBranch,
+  Rocket
 } from 'lucide-react';
 import { cn } from '../../utils/cn';
 
@@ -27,7 +29,9 @@ interface NavItem {
 const navItems: NavItem[] = [
   { name: 'Dashboard', path: '/dashboard', icon: LayoutDashboard },
   { name: 'New Project', path: '/new-project', icon: PlusCircle, badge: 'Agent' },
-  { name: 'Research Workspace', path: '/workspace', icon: BookOpen },
+  { name: 'Research Workspace', path: '/workspace', icon: BookOpen, badge: 'PDF' },
+  { name: 'GitHub Explorer', path: '/github', icon: GitBranch, badge: 'Code' },
+  { name: 'Implementation Roadmap', path: '/roadmap', icon: Rocket, badge: 'Timeline' },
   { name: 'AI Chat Assistant', path: '/chat', icon: MessageSquareCode, badge: 'RAG' },
   { name: 'Research Gap Analysis', path: '/gaps', icon: Sparkles },
   { name: 'Architecture Generator', path: '/architecture', icon: Layers },
@@ -41,7 +45,7 @@ const navItems: NavItem[] = [
 export const Sidebar: React.FC = () => {
   return (
     <aside className="w-64 border-r border-border/60 bg-card/40 backdrop-blur-xl flex flex-col h-screen sticky top-0 z-30 select-none">
-      {/* Brand Header matching PPT */}
+      {/* Brand Header */}
       <div className="p-4 border-b border-border/60 flex items-center space-x-3">
         <div className="relative flex items-center justify-center w-10 h-10 rounded-xl bg-gradient-to-tr from-violet-600 to-indigo-500 shadow-md shadow-violet-500/20 text-white">
           <Box className="w-5 h-5 animate-float" />
@@ -93,7 +97,7 @@ export const Sidebar: React.FC = () => {
         })}
       </div>
 
-      {/* Footer Branding from PPT */}
+      {/* Footer Branding */}
       <div className="p-3 border-t border-border/60 bg-muted/20">
         <div className="rounded-lg p-2.5 bg-card/60 border border-border/50 text-[11px] space-y-1">
           <div className="flex items-center space-x-1.5 text-xs font-semibold text-foreground">

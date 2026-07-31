@@ -9,7 +9,10 @@ import {
   CheckCircle2, 
   ArrowUpRight, 
   Cpu, 
-  FileCheck 
+  FileCheck,
+  GitBranch,
+  Rocket,
+  BarChart3
 } from 'lucide-react';
 import { ResponsiveContainer, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Radar, Tooltip } from 'recharts';
 import { useProject } from '../context/ProjectContext';
@@ -36,13 +39,13 @@ export const DashboardPage: React.FC = () => {
         <div className="space-y-1">
           <div className="flex items-center space-x-2">
             <Sparkles className="w-5 h-5 text-violet-400 animate-pulse" />
-            <span className="text-xs font-semibold uppercase tracking-wider text-violet-400">AI Innovation Platform</span>
+            <span className="text-xs font-semibold uppercase tracking-wider text-violet-400">AI Research & Innovation Co-Pilot</span>
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-foreground">
-            Research & Innovation Copilot Dashboard
+            Research Workspace & Innovation Dashboard
           </h1>
           <p className="text-xs text-muted-foreground max-w-xl">
-            Convert simple project ideas into academic-backed innovation pipelines with autonomous 5-agent LangGraph execution.
+            Analyze project ideas, view embedded research paper PDFs, explore GitHub codebases, and generate AI implementation roadmaps.
           </p>
         </div>
         <div className="flex items-center space-x-3">
@@ -61,7 +64,7 @@ export const DashboardPage: React.FC = () => {
               <Cpu className="w-6 h-6" />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground font-medium">Total Research Runs</p>
+              <p className="text-xs text-muted-foreground font-medium">Total Pipelines</p>
               <h3 className="text-2xl font-bold text-foreground">{projects.length}</h3>
             </div>
           </CardContent>
@@ -85,8 +88,8 @@ export const DashboardPage: React.FC = () => {
               <BookOpen className="w-6 h-6" />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground font-medium">Indexed Papers</p>
-              <h3 className="text-2xl font-bold text-foreground">24 Academic</h3>
+              <p className="text-xs text-muted-foreground font-medium">Research Workspace</p>
+              <h3 className="text-2xl font-bold text-foreground">Semantic Scholar</h3>
             </div>
           </CardContent>
         </Card>
@@ -94,14 +97,59 @@ export const DashboardPage: React.FC = () => {
         <Card className="glass-panel">
           <CardContent className="p-5 flex items-center space-x-4">
             <div className="p-3 rounded-xl bg-cyan-500/10 text-cyan-400 border border-cyan-500/20">
-              <FileCheck className="w-6 h-6" />
+              <Rocket className="w-6 h-6" />
             </div>
             <div>
-              <p className="text-xs text-muted-foreground font-medium">Blueprints Generated</p>
-              <h3 className="text-2xl font-bold text-foreground">12 Complete</h3>
+              <p className="text-xs text-muted-foreground font-medium">AI Implementation</p>
+              <h3 className="text-2xl font-bold text-foreground">5-Phase Roadmap</h3>
             </div>
           </CardContent>
         </Card>
+      </div>
+
+      {/* Quick Launch Features Grid */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div
+          onClick={() => navigate('/workspace')}
+          className="glass-panel p-5 rounded-xl border border-border/60 hover:border-violet-500/50 cursor-pointer transition-all space-y-2 group"
+        >
+          <div className="flex items-center justify-between">
+            <div className="p-2.5 rounded-lg bg-violet-500/10 text-violet-400">
+              <BookOpen className="w-5 h-5" />
+            </div>
+            <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-violet-400 transition-colors" />
+          </div>
+          <h3 className="text-sm font-bold text-foreground">Paper Workspace</h3>
+          <p className="text-xs text-muted-foreground">Embedded PDF viewing, DOI, citation count & copy features.</p>
+        </div>
+
+        <div
+          onClick={() => navigate('/github')}
+          className="glass-panel p-5 rounded-xl border border-border/60 hover:border-violet-500/50 cursor-pointer transition-all space-y-2 group"
+        >
+          <div className="flex items-center justify-between">
+            <div className="p-2.5 rounded-lg bg-emerald-500/10 text-emerald-400">
+              <GitBranch className="w-5 h-5" />
+            </div>
+            <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-emerald-400 transition-colors" />
+          </div>
+          <h3 className="text-sm font-bold text-foreground">GitHub Explorer</h3>
+          <p className="text-xs text-muted-foreground">In-app README viewer, repository tree, and commit history.</p>
+        </div>
+
+        <div
+          onClick={() => navigate('/roadmap')}
+          className="glass-panel p-5 rounded-xl border border-border/60 hover:border-violet-500/50 cursor-pointer transition-all space-y-2 group"
+        >
+          <div className="flex items-center justify-between">
+            <div className="p-2.5 rounded-lg bg-indigo-500/10 text-indigo-400">
+              <Rocket className="w-5 h-5" />
+            </div>
+            <ArrowUpRight className="w-4 h-4 text-muted-foreground group-hover:text-indigo-400 transition-colors" />
+          </div>
+          <h3 className="text-sm font-bold text-foreground">AI Implementation Roadmap</h3>
+          <p className="text-xs text-muted-foreground">Interactive 5-phase timeline, deliverables, and PDF export.</p>
+        </div>
       </div>
 
       {/* Main Grid Section */}
@@ -144,11 +192,11 @@ export const DashboardPage: React.FC = () => {
                   <Button variant="outline" size="sm" onClick={() => navigate('/workspace')}>
                     <BookOpen className="w-3.5 h-3.5 mr-1.5 text-violet-400" /> Literature Workspace
                   </Button>
-                  <Button variant="outline" size="sm" onClick={() => navigate('/architecture')}>
-                    <Layers className="w-3.5 h-3.5 mr-1.5 text-indigo-400" /> System Architecture
+                  <Button variant="outline" size="sm" onClick={() => navigate('/github')}>
+                    <GitBranch className="w-3.5 h-3.5 mr-1.5 text-emerald-400" /> GitHub Explorer
                   </Button>
-                  <Button variant="outline" size="sm" onClick={() => navigate('/chat')}>
-                    <Sparkles className="w-3.5 h-3.5 mr-1.5 text-cyan-400" /> AI Copilot Chat
+                  <Button variant="outline" size="sm" onClick={() => navigate('/roadmap')}>
+                    <Rocket className="w-3.5 h-3.5 mr-1.5 text-indigo-400" /> AI Implementation Roadmap
                   </Button>
                 </div>
               </CardContent>

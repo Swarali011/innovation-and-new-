@@ -6,6 +6,8 @@ import { AuthPage } from './pages/AuthPage';
 import { DashboardPage } from './pages/DashboardPage';
 import { NewProjectPage } from './pages/NewProjectPage';
 import { ResearchWorkspacePage } from './pages/ResearchWorkspacePage';
+import { GitHubExplorerPage } from './pages/GitHubExplorerPage';
+import { RoadmapPage } from './pages/RoadmapPage';
 import { AIChatAssistantPage } from './pages/AIChatAssistantPage';
 import { ResearchGapPage } from './pages/ResearchGapPage';
 import { ArchitectureGeneratorPage } from './pages/ArchitectureGeneratorPage';
@@ -44,6 +46,8 @@ export const AppRoutes: React.FC = () => {
         <Route path="/dashboard" element={<DashboardPage />} />
         <Route path="/new-project" element={<NewProjectPage />} />
         <Route path="/workspace" element={<ResearchWorkspacePage />} />
+        <Route path="/github" element={<GitHubExplorerPage />} />
+        <Route path="/roadmap" element={<RoadmapPage />} />
         <Route path="/chat" element={<AIChatAssistantPage />} />
         <Route path="/gaps" element={<ResearchGapPage />} />
         <Route path="/architecture" element={<ArchitectureGeneratorPage />} />
