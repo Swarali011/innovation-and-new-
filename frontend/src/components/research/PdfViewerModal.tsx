@@ -143,7 +143,7 @@ export const PdfViewerModal: React.FC<PdfViewerModalProps> = ({ paper, onClose }
               {/* Paper Metadata Summary */}
               <div className="space-y-4 bg-card/60 p-6 rounded-xl border border-border/60">
                 <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border/40 pb-3">
-                  <Badge variant="emerald" className="text-xs">
+                  <Badge variant="success" className="text-xs">
                     {(paper.relevanceScore * 100).toFixed(0)}% Relevance Match
                   </Badge>
                   {paper.doi && (

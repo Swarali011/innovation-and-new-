@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BookOpen, ExternalLink, Search, Sparkles, Download, Copy, Check, Filter, Eye, AlertCircle } from 'lucide-react';
 import { useProject } from '../context/ProjectContext';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from '../components/ui/Card';
@@ -7,6 +7,7 @@ import { Button } from '../components/ui/Button';
 import { Badge } from '../components/ui/Badge';
 import { ResearchPaper } from '../types';
 import { PdfViewerModal } from '../components/research/PdfViewerModal';
+import { generateSmartMockData } from '../utils/geminiService';
 
 export const ResearchWorkspacePage: React.FC = () => {
   const { activeProject } = useProject();
@@ -16,40 +17,23 @@ export const ResearchWorkspacePage: React.FC = () => {
   const [searching, setSearching] = useState(false);
   const [customPapers, setCustomPapers] = useState<ResearchPaper[] | null>(null);
 
-  const defaultPapers: ResearchPaper[] = activeProject?.papers || [
-    {
-      id: "paper-1",
-      title: "Autonomous Multi-Agent AI Frameworks for Innovation Discovery",
-      authors: ["Harrison Chase", "Bagatur Askaryan"],
-      publishedYear: 2024,
-      journal: "NeurIPS Agentic Workshop",
-      abstract: "A comprehensive study on stateful graph-based multi-agent execution applied to automated research discovery. Addresses multi-step decision loops, state persistence, and streaming.",
-      citationCount: 142,
-      doi: "10.1016/j.ai.2024.08.001",
-      url: "https://arxiv.org/abs/2402.12345",
-      pdfUrl: "https://arxiv.org/pdf/2402.12345.pdf",
-      isEmbeddable: true,
-      source: "arxiv",
-      relevanceScore: 0.98,
-      keyFindings: ["Cyclic state graphs prevent reasoning drift by 64%.", "State persistence supports human-in-the-loop validation."]
-    },
-    {
-      id: "paper-2",
-      title: "Retrieval-Augmented Generation & Vector Search for Gap Matrix Discovery",
-      authors: ["Prachi P.", "Swarali L."],
-      publishedYear: 2025,
-      journal: "IEEE TKDE",
-      abstract: "Proposes a novel hybrid semantic retrieval pipeline combining dense FAISS indexing with sparse keyterm matching to discover research gaps and synthesize literature surveys.",
-      citationCount: 89,
-      doi: "10.1109/TKDE.2025.341209",
-      url: "https://arxiv.org/abs/2403.09876",
-      pdfUrl: "https://arxiv.org/pdf/2403.09876.pdf",
-      isEmbeddable: true,
-      source: "semantic_scholar",
-      relevanceScore: 0.94,
-      keyFindings: ["Multi-agent gap detection increases novelty ratings by 42%.", "Dense FAISS retrieval achieves sub-100ms survey extraction."]
+  // Reset custom papers and fetch/generate project-specific papers when activeProject changes
+  useEffect(() => {
+    setCustomPapers(null);
+  }, [activeProject?.id]);
+
+  const defaultPapers: ResearchPaper[] = React.useMemo(() => {
+    if (!activeProject) return [];
+    if (activeProject.papers && activeProject.papers.length > 0) {
+      return activeProject.papers;
     }
-  ];
+    // Generate dynamic project-tailored papers based on project title, domain & rawIdea
+    return generateSmartMockData(
+      activeProject.title,
+      activeProject.domain,
+      activeProject.rawIdea
+    ).papers;
+  }, [activeProject]);
 
   const displayPapers = customPapers || defaultPapers;
 

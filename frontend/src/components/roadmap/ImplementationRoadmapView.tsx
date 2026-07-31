@@ -122,7 +122,7 @@ export const ImplementationRoadmapView: React.FC<ImplementationRoadmapViewProps>
                 <CardHeader className="p-5 cursor-pointer select-none" onClick={() => toggleExpand(phase.phase_id)}>
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div className="flex items-center space-x-3">
-                      <Badge variant={isCompleted ? 'emerald' : 'purple'} className="text-[11px] font-mono uppercase">
+                      <Badge variant={isCompleted ? 'success' : 'purple'} className="text-[11px] font-mono uppercase">
                         Phase {phase.phase_number}
                       </Badge>
                       <CardTitle className={`text-base font-bold ${isCompleted ? 'line-through text-muted-foreground' : 'text-foreground'}`}>

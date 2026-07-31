@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {
-  GitHub,Star,
+  Star,
   GitFork,
   CircleDot,
   X,

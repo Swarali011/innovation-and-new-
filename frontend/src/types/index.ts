@@ -80,7 +80,7 @@ export interface GitHubRepoDetails {
 export interface RoadmapPhase {
   phase_id: string;
   phase_number: number;
-  title: str;
+  title: string;
   estimated_duration: string;
   status?: 'pending' | 'in_progress' | 'completed';
   deliverables: string[];
