@@ -272,25 +272,7 @@ GEMINI_API_KEY
 
 ---
 
-# 📸 Screenshots
 
-Add screenshots here.
-
-Example:
-
-```
-screenshots/
-
-home.png
-
-dashboard.png
-
-research.png
-
-workspace.png
-```
-
----
 
 # 🚀 Future Enhancements
 
